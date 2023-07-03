@@ -1,0 +1,96 @@
+<CameraApp>:   
+    MDScreen:    
+        MDNavigationLayout:
+            ScreenManager:
+                id:scren_manager
+                name:scren_manager
+                MDScreen:
+                    name:'cm_scr'    
+                    MDBoxLayout:
+                        orientation:'vertical'
+                        MDToolbar:
+                            id: toolbar
+                            pos_hint: {"top": 1}
+                            elevation: 10
+                            title:'First App'
+                            left_action_items:[['atom',lambda x:nav_drawer.set_state('toggle')]]
+                        MDBoxLayout:
+                            orientation:'vertical'
+                            #:import ZBarCam kivy_garden.zbarcam.ZBarCam
+                            #:import ZBarSymbol pyzbar.pyzbar.ZBarSymbol
+                            ZBarCam:
+                                id: zbarcam
+                                # optional, by default checks all types
+                                code_types: ZBarSymbol.QRCODE, ZBarSymbol.EAN13
+                            MDFloatingActionButton:
+                                id: select_image
+                                icon:  "image-multiple"
+                                #md_bg_color: app.theme_cls.primary_color
+                                on_press:root.select()
+                                pos_hint: {'center_x':0.5,'center_y':0.5}
+                MDScreen:
+                    name:'bgs_scr'
+                    MDBoxLayout:
+                        orientation:'vertical'
+                        MDToolbar:
+                            id: toolbar
+                            pos_hint: {"top": 1}
+                            elevation: 10
+                            title:'First App'
+                            left_action_items:[['atom',lambda x:nav_drawer.set_state('toggle')]]
+                        MDLabel:
+                            text:'Bugs'
+                            halign:'center'
+                MDScreen:
+                    name:'stg_scr'
+                    MDBoxLayout:
+                        orientation:'vertical'
+                        MDToolbar:
+                            id: toolbar
+                            pos_hint: {"top": 1}
+                            elevation: 10
+                            title:'First App'
+                            left_action_items:[['atom',lambda x:nav_drawer.set_state('toggle')]]
+                        MDLabel:
+                            text:'Setting'
+                            halign:'center'
+
+            MDNavigationDrawer:
+                id:nav_drawer
+                MDBoxLayout:
+                    orientation:'vertical'
+
+                    Image:
+                        source:'logo.jpg'
+
+                    MDLabel:
+                        text: 'Bahrib665@Gmail.com'
+                        font_style: 'Subtitle1'
+                        halign:'center'
+                        size_hint_y:0.2
+                    ScrollView:
+                        MDList:
+                            size_hint_y:None
+                            OneLineIconListItem:
+                                text:'Camera'
+                                on_press:
+                                    nav_drawer.set_state("close") 
+                                    scren_manager.current="cm_scr"
+                                IconLeftWidget:
+                                    icon:'camera'
+
+                            OneLineIconListItem:
+                                text:'Report Bugs'
+                                on_press:
+                                    nav_drawer.set_state("close")
+                                    scren_manager.current="bgs_scr"
+                                IconLeftWidget:
+                                    icon:'send'
+
+                            OneLineIconListItem:
+                                on_press:
+                                    nav_drawer.set_state("close")
+                                    scren_manager.current='stg_scr'
+                                text:'Setting'
+                                IconLeftWidget:
+                                    icon:'cog'

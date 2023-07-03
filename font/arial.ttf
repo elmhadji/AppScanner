@@ -1,0 +1,16 @@
+Hi
+
+I have attached u my code, fonts, and output screenshot.
+I'm using latest kivy in Windows.
+
+Thanks.
+
+On Sunday, August 31, 2014 9:32:47 AM UTC+4:30, ZenCODE wrote:
+>
+> Kivy/Python is unicode capable, so supports any language. If it is not 
+> working for you, chances are you are just using a font that cannot display 
+> the characters you require? Otherwise, please post some example code 
+> showing your problem.
+>
+> Peace
+>
